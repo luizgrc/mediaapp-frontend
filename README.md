@@ -133,32 +133,133 @@ git pull --rebase origin master
 
 
 
-# AngDemo
+## Taller Git Anotes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+## Git 101
 
-## Development server
+git clone
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+crea los siguientes carpetas 
 
-## Code scaffolding
+>working dir tus archivos
+>index(stage) 
+>HEAD -> EL UTIMO COMMIT que se hizo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+GIT PULL
+hace 2 comandos git fetch y get merge
+traer los ultimos cambios de la nube y actualiza los cambios de tu repositorio local
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Workflowrs con GIT
 
-## Running unit tests
+estructura de Flow
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Mater -> codigo de produccion
 
-## Running end-to-end tests
+Develop -> task
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    Feature-001
 
-## Further help
+Release -> 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    Release-1.0
+
+Hotifx -> fixes arreglos
+
+    Fix-001
+
+
+merge
+
+git checkout feature/task-001
+
+git pull origin Develop
+
+rebase
+
+git checkout feature/task-001
+
+git pull --rebase origin develop
+
+
+git checkout develop
+
+git reset --hard origin/develop
+
+git checkout -b release-v1.0.0
+
+git push
+
+hitfix
+
+git checkout master
+
+git reset --hard origin/master
+
+git checkout -b Hotifx
+
+git push
+
+Herramientas que investigar
+
+    Gitlens
+
+ITers2
+
+    zsh
+
+    oh-my-zsh
+
+Revisar comandos
+
+git flog
+----------------------------------------
+ir hasta esa linea de tiempo
+
+git reset --hard origin/master
+
+
+git pull --rebase origin develop
+
+--actualiza la rama sin importar la linea de tiempo que tenemos en el repositorio
+
+git push -f
+
+cambiar el comentario
+
+git commit --ammend -m '<comentario>
+
+git rebase -i HEAD~2
+
+Git Avanzado 
+cd .git/
+
+mkdir branches
+mkdir hooks
+mkdir hookstoch config
+touch configtoch description
+mkdir objects
+mkdir refs
+mkdir refs/heads
+mkdir pack
+mkdir info
+vim HEAD 
+ref: refs/heads/master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
