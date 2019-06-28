@@ -19,6 +19,7 @@ export class PacienteComponent implements OnInit {
   dataSource: MatTableDataSource<Paciente>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  cantidad: number;
 
   constructor(
     private pacienteService: PacienteService,
@@ -42,12 +43,16 @@ export class PacienteComponent implements OnInit {
   }
 
   listar() {
+    this.pedirPaginado();
+  }
+  /*
+  listar() {
     this.pacienteService.listar().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-  }
+  }*/
 
   eliminar(idPaciente: number) {
     this.pacienteService.eliminar(idPaciente).subscribe(() => {
@@ -62,5 +67,26 @@ export class PacienteComponent implements OnInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  mostrarMas(e: any) {
+    this.pedirPaginado(e);
+  }
+
+  pedirPaginado(e?: any) {
+    let pageIndex = 0;
+    let pageSize = 10;
+    if (e != null) {
+      pageIndex = e.pageIndex;
+      pageSize = e.pageSize;
+    }
+    this.pacienteService
+      .listarPageable(pageIndex, pageSize)
+      .subscribe((data: any) => {
+        let pacientes = data.content;
+        this.cantidad = data.totalElements;
+        this.dataSource = new MatTableDataSource(pacientes);
+        this.dataSource.sort = this.sort;
+      });
   }
 }

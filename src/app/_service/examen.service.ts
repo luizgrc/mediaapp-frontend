@@ -1,3 +1,4 @@
+import { ConsultaListaExamen } from './../_model/consultaListExamen';
 import { Examen } from "./../_model/examen";
 import { HttpClient } from "@angular/common/http";
 import { HOST } from "./../_shared/var.constants";
@@ -19,6 +20,9 @@ export class ExamenService {
   }
   listarporId(idExamen: number) {
     return this.http.get<Examen>(`${this.url}/examenes/${idExamen}`);
+  }
+  listarExamenPorConsulta(idExamen : number){
+    return this.http.get<ConsultaListaExamen[]>(`${HOST}/consultaexamenes/${idExamen}`);
   }
   registrar(examen : Examen){
     return this.http.post(`${this.url}/examenes`,examen);

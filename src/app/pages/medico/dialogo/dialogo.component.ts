@@ -27,4 +27,22 @@ export class DialogoComponent implements OnInit {
   cancelar(){
     this.dialogRef.close();
   }
+  operar(){
+    if(this.medico != null && this.medico.idMedico > 0){
+      this.medicoService.modificar(this.medico).subscribe(() =>{
+        this.medicoService.listar().subscribe(data =>{
+          this.medicoService.medicoCambio.next(data);
+          this.medicoService.mensajeCambio.next("SE MODIFICO");
+        });
+      });
+    }else{
+      this.medicoService.registrar(this.medico).subscribe(()=>{
+        this.medicoService.listar().subscribe(data =>{
+          this.medicoService.medicoCambio.next(data);
+          this.medicoService.mensajeCambio.next("SE REGISTRO");
+        });
+      });
+    }
+    this.dialogRef.close();
+  }
 }

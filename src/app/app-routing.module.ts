@@ -1,3 +1,6 @@
+import { BuscarComponent } from './pages/buscar/buscar.component';
+import { EspecialComponent } from './pages/consulta/especial/especial.component';
+import { ConsultaComponent } from './pages/consulta/consulta.component';
 import { ExamenEdicionComponent } from './pages/examen/examen-edicion/examen-edicion.component';
 import { ExamenComponent } from './pages/examen/examen.component';
 import { EspecialidadEdicionComponent } from './pages/especialidad/especialidad-edicion/especialidad-edicion.component';
@@ -7,6 +10,8 @@ import { PacienteComponent } from './pages/paciente/paciente.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MedicoComponent } from './pages/medico/medico.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -27,7 +32,13 @@ const routes: Routes = [
       { path: 'edicion/:id', component: ExamenEdicionComponent }
     ]
   },
-  { path: 'medico', component: MedicoComponent }
+  { path: 'medico', component: MedicoComponent },
+  { path: 'consulta', component: ConsultaComponent },
+  { path: 'consulta-especial', component: EspecialComponent },
+  { path: 'buscar', component: BuscarComponent },
+  { path: 'reporte', component: ReporteComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '' , redirectTo: 'login', pathMatch: 'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -45,10 +45,11 @@ export class MedicoComponent implements OnInit {
     })
   }
 
-  openDialog(medico : Medico){
+  openDialog(medico? : Medico){
+    let med = medico != null ? medico : new Medico();
     this.dialog.open(DialogoComponent, {
       width:'250px',
-      data: medico
+      data: med
     });
   }
   applyFilter(filterValue : string){

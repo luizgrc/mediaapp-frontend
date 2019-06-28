@@ -19,6 +19,9 @@ export class PacienteService {
   listar() {
     return this.http.get<Paciente[]>(`${this.url}/pacientes`);
   }
+  listarPageable(p: number, s:number){
+    return this.http.get(`${this.url}/pacientes/pageable?page=${p}&size=${s}`);
+  }
 
   listarPorId(idPaciente: number) {
     return this.http.get<Paciente>(`${this.url}/pacientes/${idPaciente}`);
