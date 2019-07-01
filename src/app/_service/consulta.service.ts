@@ -40,7 +40,7 @@ export class ConsultaService {
   }
 
   leerArchivo(){
-    return this.http.get(`${this.url}/leerArchivo/2` , {
+    return this.http.get(`${this.url}/leerArchivo/1` , {
       responseType : 'blob'
     });
   }
